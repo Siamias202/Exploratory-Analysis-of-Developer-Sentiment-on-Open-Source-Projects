@@ -119,9 +119,9 @@ The dataset includes:
      | High   |  -| 0.199|-0.081
      | Medium    | 0.119|-| 0.286 | 
      | Low   |   0.081 |0.286| - | 
-  
-     
-  ![Alt text](figures\rq1.png "Optional Title")
+
+
+  ![Alt text](rq1.png "Sentiment Frequencies of Commit messages by Committer’s Category")
  
 
 ## Usage
