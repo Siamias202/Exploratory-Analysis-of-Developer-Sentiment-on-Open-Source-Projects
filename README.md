@@ -123,9 +123,11 @@ The dataset includes:
 
   ![Alt text](rq1.png "Sentiment Frequencies of Commit messages by Committer’s Category")
 
-   <div style="border: 1px solid #000; padding: 10px; margin: 10px;">
-  Answer: The analysis reveals a significant association between committer frequency and commit sentiment. Low-category committers have significantly higher negative sentiment than other categories.
-</div>
+   
+  ```tsx 
+  Answer: The analysis reveals a significant association between committer frequency and commit sentiment. Low-category committers have significantly higher negative sentiment than other categories
+  ```
+
 
 
 ## Usage
