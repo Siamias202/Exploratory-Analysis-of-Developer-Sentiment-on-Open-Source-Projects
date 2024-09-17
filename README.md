@@ -74,6 +74,55 @@ The dataset includes:
 
 ## Result Analysis
 
+- **RQ1: Does Commitfrequency affect the developer sentiment on the commit message?**
+    
+  
+   - *Sentiment distribution across different committer frequencies* 
+      | Sentiment     | High  |   Low | Medium
+      |--------|-----------|------|----|
+      | Negative    |  32721 |   884 | 5432 | 
+      | Positive    |  12184 |   196 | 1820 | 
+      | Neutral   |  495019 |   12261 | 81111 | 
+
+    
+
+  - *Chi Squared Test Result*  
+     - Chi-squared Statistic: 55.067899563179445
+     - p-value : 3.144 × 10<sup>-11</sup>
+
+
+  - *Expected frequencies for each sentiment category across different committer frequencies.*
+     | Sentiment     | High  |   Low | Medium
+     |--------|-----------|------|----|
+     | Negative    |  32849.272769 |    811.673769 | 5376.053462 | 
+     | Positive    |  11949.168054 |   295.252389|  1955.579557 | 
+     | Neutral   |  495125.559178 |   12234.073842 | 81031.366981 | 
+
+
+  - *Standardized residuals for Committer Category* 
+     | Category    | Negative  |   Positive | Neutral
+     |--------|-----------|------|----|
+     | High   |  -0.707736| 2.148267|-0.151437 
+     | Medium    | 0.763030|-3.065889| 0.279748 | 
+     | Low   |   2.538663 |-5.776227| 0.243438 | 
+
+  - *Mann-Whitney U test*
+      | Category    | U-statistics  |   P-value | 
+     |--------|-----------|------|
+     | High   |  3.053 × 10<sup>10</sup> | P<<0.05| 
+     | Medium    | 7.580 × 10<sup>8</sup>|1.261 × 10<sup>-163</sup>| 
+     | Low   |   1.430 × 10<sup>7</sup> |4.9 × 10<sup>-31</sup>| | 
+
+  - *Mann-Whitney U test between positive and negative sentiment scores for each committer category*
+      | Category    | High  |   Medium | Low
+     |--------|-----------|------|----|
+     | High   |  -| 0.199|-0.081
+     | Medium    | 0.119|-| 0.286 | 
+     | Low   |   0.081 |0.286| - | 
+  
+     
+  ![Alt text](figures\rq1.png "Optional Title")
+ 
 
 ## Usage
 
