@@ -24,19 +24,6 @@ The dataset includes:
   - Issue types (bug/non-bug)
   - "Part of the day" based on commit time
 
-- **Top 10 Products based on highest commits**:  
-| Products | Commits | Committers | Issues | Bugs  | Non-Bugs |
-|----------|---------|------------|--------|-------|----------|
-| HBASE    | 41661   | 192        | 14687  | 22184 | 19477    |
-| AMBARI   | 35575   | 205        | 21145  | 26858 | 8717     |
-| SLING    | 31377   | 127        | 6747   | 9146  | 22231    |
-| CAMEL    | 26848   | 206        | 10458  | 8956  | 17892    |
-| SPARK    | 26119   | 122        | 15958  | 11963 | 14156    |
-| SOLR     | 22598   | 131        | 6728   | 8813  | 13785    |
-| HIVE     | 18093   | 160        | 12709  | 10767 | 7326     |
-| HDFS     | 17493   | 175        | 8104   | 7646  | 9847     |
-| LUCENE   | 17468   | 110        | 5615   | 6573  | 10895    |
-| HADOOP   | 15805   | 224        | 8238   | 8485  | 7320     |
 
 
 - **Generated Tables for Research Questions**:
