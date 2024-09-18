@@ -124,10 +124,232 @@ The dataset includes:
   ![Alt text](rq1.png "Sentiment Frequencies of Commit messages by Committer’s Category")
 
    
-  ```tsx 
-  Answer: The analysis reveals a significant association between committer frequency and commit sentiment. Low-category committers have significantly higher negative sentiment than other categories
-  ```
+  > **Answer to RQ1**  
+  > The analysis reveals a significant association between committer frequency and commit sentiment. Low-category committers have significantly higher negative sentiment than other categories.
+  
 
+
+<br>
+<br>
+
+- **RQ2: Does working time affect the developer’s sentiment? Is the relation reflected on commit messages?**
+    
+  
+   - *Sentiment distribution across different Part of Day* 
+      | Sentiment     | Afternoon  |   Evening | Morning | Night |
+      |--------|-----------|------|----|----------|
+      | Negative    |  17623 |   8432 | 10037 |2945 |
+      | Positive    |  5704 |   2963 | 3946 | 1587 |
+      | Neutral   |  243483 |   133617 | 147416 | 63875| 
+
+    
+
+  - *Chi Squared Test Result*  
+     - Chi-squared Statistic: 597.4521877544643
+     - p-value : 8.266 × 10<sup>-126</sup>
+
+
+  - *Expected frequencies for each sentiment category across different Part of Day*
+     | Sentiment     | Afternoon  |   Evening | Morning | Night |
+      |--------|-----------|------|----|----------|
+      | Negative    |  16232.866973 | 8822.609743| 9819.603825 |4161.919460|
+      | Positive    |  5904.826473 | 3209.290118 |3571.954154 |1513.929255 |
+      | Neutral   |  244672.306555 | 132980.100139 | 148007.442021 | 62731.151285 |
+
+
+  - *Standardized residuals for Part of Day Commit* 
+     | Part of Day Commit   | Negative  |   Positive | Neutral
+     |--------|-----------|------|----|
+     | Afternoon   |  10.910854|-2.613469|-2.404371 |
+     | Evening    | -4.158575 | -4.347529| 1.746537 |
+     | Morning   |   2.193840 | 6.258524 | -1.537342 |
+     |Night | -18.863184 | 1.877979| 4.566957 |
+
+  - *Mann-Whitney U test*
+      | Category    | U-statistics  |   P-value | 
+     |--------|-----------|------|
+     | Afternoon   |  7.091 × 10<sup>9</sup> | P<<0.05| 
+     | Morning   | 2.667 × 10<sup>9</sup>|4.591 × 10<sup>-232</sup>| 
+     | Night  |   5.301 × 10<sup>8</sup> | 5.657 × 10<sup>-28</sup>| 
+     |Evening | 2.225 × 10<sup>9</sup> | 4.836 × 10<sup>-235</sup>|   
+
+  - *Mann-Whitney U test between positive and negative sentiment scores for each part of day*
+      | Part of Day Commit | Morning            | Afternoon          | Evening           | Night             |
+     |--------------------|--------------------|--------------------|-------------------|-------------------|
+     | Morning        | –                  | 4.982 × 10<sup>−16</sup>     | 9.247 × 10<sup>−1</sup>     | 2.587 × 10<sup>−25</sup>    |
+     | Afternoon      | 4.982 × 10<sup>−16</sup>     | –                  | 2.136 × 10<sup>−15</sup>    | 2.394 × 10<sup>−65</sup>    |
+     | Evening        | 9.247 × 10<sup>−1</sup>      | 2.136 × 10<sup>−15</sup>     | –                 | 7.193 × 10<sup>−27</sup>    |
+     | Night          | 2.587 × 10<sup>−25</sup>     | 2.394 × 10<sup>−65</sup>     | 7.193 × 10<sup>−27</sup>    | –                 |
+
+
+
+  ![Alt text](rq2.png "Sentiment Frequencies of Commit messages by Part of Day")
+
+   
+  > **Answer to RQ2**  
+  > There is minimal association between working times and commit sentiment.
+ Developers working at evening and night tend to show slightly higher negative
+ sentiment.
+
+
+<br><br>
+
+- **RQ3: Is the developer’s emotion in the issue comment dependent on the issue type e.g. Bug?**
+    
+  
+   - *Sentiment frequencies of issue comments across different issue types* 
+
+      | Sentiment | Positive Count | Negative Count | Neutral Count |
+      |-----------|----------------|----------------|---------------|
+      | Bug       | 467,624         | 376,168        | 1,032,756     |
+      | Non-bug   | 473,517         | 283,312        | 1,180,785     |
+
+   <br>
+   
+   ![Alt text](rq3bar.png " Sentiment frequencies of issue comments across different issue types")
+   *Sentiment frequencies of issue comments across different issue types*
+
+   <br>
+
+   ![Alt text](rq3box.png " Sentiment frequencies of issue comments across different issue types")   
+    *Distribution of mean positive, negative, and cumulative sentiment scores
+    of issues for different issue types*
+    <br>
+    <br>
+
+  - *Chi Squared Test Result*  
+     - Chi-squared Statistic: 22038.493
+     - p-value : <<0.05
+
+
+  - *Expected sentiment frequencies of issue comments across different issue
+ types* 
+
+      | Sentiment | Positive Count | Negative Count | Neutral Count |
+      |-----------|----------------|----------------|---------------|
+      | Bug       | 463036.510         | 324460.753        | 1089050.737     |
+      | Non-bug   | 478104.490         | 335019.247        | 1124490.263     |
+
+
+  - *Standardized residuals for issue types* 
+     | Part of Day Commit   | Negative  |   Positive | Neutral
+     |--------|-----------|------|----|
+     | Bug  |   6.742|90.776|-53.944 |
+     | Non-bug    | 6.635 | -89.334| 53.087 |
+    
+
+  - *Mann-Whitney U test*
+      | Type    | U-statistics  |   P-value | 
+     |--------|-----------|------|
+     | Bug   |  8.366 × 10<sup>10</sup> | P<<0.05| 
+     | Non-bug   | 6.203 × 10<sup>10</sup>|P<<0.05| 
+      
+
+  - *Mann-Whitney U test between positive and negative sentiment scores for each part of day*
+      | Type    | Bug  |   Non-bug | 
+     |--------|-----------|------|
+     | Bug   |  - | P<<0.05| 
+     | Non-bug   | P<<0.05|-| 
+
+
+
+
+
+   
+  > **Answer to RQ3**  
+  > Issue type significantly influences issue discussion sentiment. Issues related to bugs are associated with more negative sentiment, and so they show a wider range of cumulative emotional scores compared to issues that are not related to bugs.
+
+<br><br>
+
+- **RQ4: Do the emotions in the issue comments differ depending on the severity of the issue?**
+    
+  
+   - *Sentiment frequencies of issue comments across different issue types* 
+
+      | Severity  | Blocker | Critical | Major   | Minor   | Trivial |
+      |-----------|---------|----------|---------|---------|---------|
+      | Negative  | 39,716  | 49,265   | 439,509 | 117,301 | 13,689  |
+      | Neutral   | 102,122 | 134,894  | 1,531,149 | 393,634 | 51,742  |
+      | Positive  | 44,046  | 55,221   | 638,294 | 177,164 | 26,416  |
+
+
+   <br>
+   
+   ![Alt text](rq4bar.png " Sentiment frequencies of issue comments across different issue types")
+   *Sentiment frequencies of issue comments across different severities*
+
+   <br>
+
+   ![Alt text](rq4box.png " Sentiment frequencies of issue comments across different issue types")   
+    *Distribution of mean positive, negative, and cumulative sentiment scores
+ of issues for different severities*
+    <br>
+    <br>
+
+  - *Chi Squared Test Result*  
+     - Chi-squared Statistic: 5961.983
+     - p-value : <<0.05
+
+
+  - *Expected sentiment frequencies of issue comments across different issue
+ types* 
+
+      | Severity  | Blocker | Critical | Major   | Minor   | Trivial |
+      |-----------|---------|----------|---------|---------|---------|
+      | Negative  | 32139.899 | 41389.517 | 451095.592 | 118974.372 |15880.621
+      | Neutral   | 107877.394 | 138923.686 | 1514099.878 | 399336.826 |53303.216  |
+      | Positive  | 45866.708 | 59066.797 | 643756.530 | 169787.802 | 22663.164  |
+
+
+  - *Standardized residuals for issue severities* 
+     | Severity  | Blocker | Critical | Major   | Minor   | Trivial |
+      |-----------|---------|----------|---------|---------|---------|
+      | Negative  | 42.259 | 38.711 | -17.251 | -4.851 |-17.391
+      | Neutral   | -17.523 | -10.811 |  13.856 | -9.024 |-6.762  |
+      | Positive  | -8.501 | -15.824 | -6.808 | 17.901 | 24.929  |
+    
+
+  - *Mann-Whitney U test*
+      | Severity    | U-statistics  |   P-value | 
+     |--------|-----------|------|
+     | Blocker   |  3.593 × 10<sup>8</sup> | 5.765 × 10<sup>-15</sup>| 
+     | Critical  | 6.856 × 10<sup>8</sup>|1.245 × 10<sup>-28</sup>| 
+     | Major   | 1.313 × 10<sup>11</sup>|P<<0.05| 
+     | Minor   | 1.271 × 10<sup>10</sup>|P<<0.05| 
+     | Trivial   | 3.379 × 10<sup>8</sup>|P<<0.05| 
+      
+
+  - *Mann-Whitney U test between cumulative sentiment scores for each pair of issue severities*
+     | Severity  | Blocker | Critical | Major   | Minor   | Trivial |
+      |-----------|---------|----------|---------|---------|---------|
+      | Blocker  | - | 5.036 × 10<sup>-1</sup> | 4.083 × 10<sup>-92</sup> | 5.000 × 10<sup>-93</sup> |5.012 × 10<sup>-193</sup>
+      | Critical   | 5.036 × 10<sup>-1</sup> | - |  1.413 × 10<sup>-113</sup> | 2.917 × 10<sup>-113</sup> |2.570 × 10<sup>-223</sup>  |
+      | Major  | 4.083 × 10<sup>-92</sup> | 1.413 × 10<sup>-115</sup> | - | 2.329 × 10<sup>-2</sup> | 8.469 × 10<sup>-113</sup>  |
+      | Minor  |  5.000 × 10<sup>-93</sup>| 2.917 × 10<sup>-113</sup> | 2.329 × 10<sup>-2</sup> | - | 9.787 × 10<sup>-97</sup>  |
+      | Trivial  | 5.012 × 10<sup>-193</sup> | 2.570 × 10<sup>-223</sup> | 8.469 × 10<sup>-113</sup> | 9.787 × 10<sup>-97</sup> |  - |
+
+
+
+
+
+   
+  > **Answer to RQ4**  
+  >  Issue severity also significantly influences issue discussion sentiment. Blocker
+ and critical severity issues are associated with more negative sentiment, while
+ trivial issues tend to be associated with high positive sentiment.
+
+
+## Threats to Validity
+   - <u>*Internal Validity*</u> : The internal validity is limited by the accuracy of seBERT's sentiment analysis, which, despite outperforming SentiStrength-SE, is constrained by the lack of labeled commit message datasets.
+
+   
+   - <u>*Construct Validity*</u> : Categorizing commit times by the period of day could be influenced by developers' geographic locations and time zones, but this was accounted for using timezone data.
+
+   - <u>*External Validity*</u> : The results are based on a large dataset of over 3.4 million commit messages, but the data is somewhat outdated, limiting its reflection of the current development environment.
+
+   - <u>*Reliability*</u> : The study's methodology is well-documented, with all code available in a public repository, ensuring the study can be replicated.
+
+   
 
 
 ## Usage
