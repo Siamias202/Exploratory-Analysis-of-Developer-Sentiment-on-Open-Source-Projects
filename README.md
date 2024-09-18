@@ -1,5 +1,15 @@
 # Introduction
 This Project analysis the relation between sentiment of developers with different factors like part of day , issue types , types of developers and severity of issues.
+
+# Table of contents
+- [Dataset Origin](#dataset-details)
+- [Overview](#overview)
+- [Sentiment Analysis Using seBERT](#sentiment-analysis-using-sebert)
+- [Threats to Validity](#threats-to-validity)
+
+
+  
+
 ## Dataset Origin
 
 The dataset is derived from the 20-MAD (20-Year Massive Software Artifact Data) dataset, which integrates commit and issue data from Mozilla and Apache projects spanning over 20 years. Our dataset builds upon this foundation by adding sentiment analysis annotations to commit messages.
@@ -70,10 +80,58 @@ The dataset includes:
 
 
 ## Sentiment Analysis Using seBERT
+For sentiment analysis, we used seBERT, a BERTLARGE model pre-trained on a large
+corpus of textual data from the software domain that won the 2022 Natural Language-
+based Software Engineering (NLBSE)
+<br>
 
+![Alt text](Fine-tuning-seBERT-diagram.png "seBERT fine-tuning pipeline for sentiment classification task")
+<p align="center"><em>seBERT fine-tuning pipeline for sentiment classification task</em></p>
+
+<br>
+<br>
+<p align="center"><em>Training Dataset</em></p>
+
+| Dataset    | Neutral Samples  |   Negatives Samples | Positive Samples | Total Samples|
+|--------|-----------|------|----|-----|
+| Github    |  3022 |   2087 | 2013 | 7122| 
+| Jira    |  0 |   636 | 290 | 926 | 
+| Stack Overflow 1   |  1191 |   178 | 131 | 1500 |
+| Stack Overflow 2   |  2305 |   1119 | 576 | 4000 |
+| API reviews   |  2635 |   1048 | 839 | 4522 |
+| Total samples   |  9153 |   5068 | 3849 | 18070 |
+         
+<br>
+
+Fine Tuning 
+- Optimizer : AdamW
+- Batch Size : 64
+- Epoch : 5
+- Model selection based on lowest validation loss
+- Training hardware : RTX 3060 system
+- Training time : Around 2 hours
+
+<br>
+
+<p align="center"><em>Model Evaluation</em></p>
+
+| Metric    | Finetuned seBERT  |   SentiStrength-SE | 
+|--------|-----------|------|
+| MCC    |  79.06 % |   51.83 % |  
+| Micro F1   |  87.16 % |   71.22 % |  
+| Macro F1   |  85.86 % |   66.52 % | 
+| F1 (negative)   |  86.8 % |   59.35 % | 
+| F1 (neutral)  |  89.88 % |   78.47 % | 
+| F1 (positive)   |  80.9 % |   61.73 % | 
+| Precision (negative)   |  88.7 % |   78.53 % | 
+| Precision (neutral)  |  89.31 % |   69.73 % | 
+| Precision (positive)   |  79.95 % |   73.26 % | 
+| Recall (negative)   |  84.97 % |   73.26 % | 
+| Recall (neutral)  |  90.46 % |   91 % | 
+| Recall (positive)   |  81.87 % |   53.33 % | 
+<br>
 
 ## Result Analysis
-
 - **RQ1: Does Commitfrequency affect the developer sentiment on the commit message?**
     
   
@@ -123,6 +181,9 @@ The dataset includes:
 
   ![Alt text](rq1.png "Sentiment Frequencies of Commit messages by Committer’s Category")
 
+  <p align="center"><em>Sentiment Frequencies of Commit messages by Committer’s Category</em></p>
+
+<br>
    
   > **Answer to RQ1**  
   > The analysis reveals a significant association between committer frequency and commit sentiment. Low-category committers have significantly higher negative sentiment than other categories.
@@ -185,7 +246,10 @@ The dataset includes:
 
   ![Alt text](rq2.png "Sentiment Frequencies of Commit messages by Part of Day")
 
-   
+  <p align="center"><em>Sentiment Frequencies of Commit messages by Part of Day</em></p> 
+
+<br>
+
   > **Answer to RQ2**  
   > There is minimal association between working times and commit sentiment.
  Developers working at evening and night tend to show slightly higher negative
@@ -207,13 +271,13 @@ The dataset includes:
    <br>
    
    ![Alt text](rq3bar.png " Sentiment frequencies of issue comments across different issue types")
-   *Sentiment frequencies of issue comments across different issue types*
+   <p align="center"><em>Sentiment frequencies of issue comments across different issue types</em></p>
 
    <br>
 
-   ![Alt text](rq3box.png " Sentiment frequencies of issue comments across different issue types")   
-    *Distribution of mean positive, negative, and cumulative sentiment scores
-    of issues for different issue types*
+   ![Alt text](rq3box.png " Distribution of mean positive, negative, and cumulative sentiment scores
+    of issues for different issue types")   
+   <p align="center"><em>Distribution of mean positive, negative, and cumulative sentiment scores of issues for different issue types</em></p>
     <br>
     <br>
 
@@ -276,13 +340,15 @@ The dataset includes:
    <br>
    
    ![Alt text](rq4bar.png " Sentiment frequencies of issue comments across different issue types")
-   *Sentiment frequencies of issue comments across different severities*
+   
+
+    <p align="center"><em>Sentiment frequencies of issue comments across different severities</em></p>
 
    <br>
 
    ![Alt text](rq4box.png " Sentiment frequencies of issue comments across different issue types")   
-    *Distribution of mean positive, negative, and cumulative sentiment scores
- of issues for different severities*
+   <p align="center"><em> Distribution of mean positive, negative, and cumulative sentiment scores
+   of issues for different severities </em></p>
     <br>
     <br>
 
